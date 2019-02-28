@@ -1,25 +1,25 @@
+function getPromise() {
+  return new Promise((resolve, reject) => {
+    const xmlHttpRequest = new XMLHttpRequest();
 
-
-new Promise((resolve, reject) => {
-  const xmlHttpRequest = new XMLHttpRequest();
-
-  xmlHttpRequest.onreadystatechange = () => {
-    if (xmlHttpRequest.readyState === 4) {
-      if (xmlHttpRequest.status === 200) {
-        resolve(xmlHttpRequest.text);
-      } else {
-        reject(xmlHttpRequest);
+    xmlHttpRequest.onreadystatechange = () => {
+      if (xmlHttpRequest.readyState === 4) {
+        if (xmlHttpRequest.status === 200) {
+          resolve(xmlHttpRequest.text);
+        } else {
+          reject(xmlHttpRequest);
+        }
       }
-    }
-  };
+    };
 
-  xmlHttpRequest.open('GET', 'localhost:8080/1');
-  xmlHttpRequest.send(null);
-}).then((text) => {
+    xmlHttpRequest.open('GET', 'localhost:8080/1');
+    xmlHttpRequest.send(null);
+  });
+}
+async function show() {
+  const text = await getPromise();
   const { id, price } = JSON.parse(text);
-  console.log(id);
-  console.log(price);
-  return id;
-}).catch((reason) => {
-  console.log(reason.status);
-});
+  console.log(id + price);
+}
+
+show().catch((reason) => { console.log(reason.status); });
