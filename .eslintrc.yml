@@ -17,3 +17,5 @@ rules:
   func-names: off
   no-unused-vars: warn
   no-console: off
+  no-restricted-globals: off
+  no-trailing-spaces: off
