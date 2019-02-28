@@ -1,9 +1,13 @@
-// document.querySelector("body").innerHTML += ("<span>1 2 3 4 5 </span>");
-
+import doSlot from './slot';
+import doDrunkard from './drunkard';
 import insert2Body from './utils';
 
-insert2Body('<span>1 2 3 4 5 </span>');
+const result = doSlot();
+const winner = doDrunkard();
+// insert2Body('Slot game result:');
+// insert2Body(result ? 'You win' : 'You lose');
+// console.log(result ? 'You win' : 'You lose');
 
-const htmlSpanElement = document.createElement('span');
-htmlSpanElement.appendChild(document.createTextNode('6789'));
-document.body.appendChild(htmlSpanElement);
+insert2Body(`Drunkard game result:${winner}`);
+
+console.log('The winner is: ', winner);

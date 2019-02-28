@@ -10,3 +10,10 @@ parserOptions:
   sourceType: module
 rules:
   object-curly-spacing: off
+  no-multi-spaces: off
+  indent: off
+  no-param-reassign: off
+  no-extend-native: off
+  func-names: off
+  no-unused-vars: warn
+  no-console: off
