@@ -7,6 +7,7 @@ export default function insert2Body(s) {
   htmlSpanElement.appendChild(document.createTextNode(s));
   document.body.appendChild(htmlSpanElement);
 }
+
 export function shuffle(array) {
   array = Array.prototype.slice.call(array, 0)
 

@@ -19,3 +19,4 @@ rules:
   no-console: off
   no-restricted-globals: off
   no-trailing-spaces: off
+  no-plusplus: off

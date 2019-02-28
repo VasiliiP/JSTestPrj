@@ -1,4 +1,4 @@
-import Deck from './cards';
+import Deck from './deck';
 
 function compare(player1Card, player2Card) {
   const number = Deck.value(player1Card) - Deck.value(player2Card);
