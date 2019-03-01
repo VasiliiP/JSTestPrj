@@ -2,7 +2,7 @@ import Deck from './deck';
 
 const BET = 10;
 const MAX_POINTS = 21;
-const COMP_LIMIT_POINTS = 17;
+const COMP_LIMIT_POINTS = 16;
 
 function takeCard(cards) {
   const card = cards.pop();
@@ -22,7 +22,7 @@ function getUserPoints(cards) {
     if (points > 21) {
       return 0;
     }
-  } while (points < MAX_POINTS && confirm(`You have ${points}. Take more?`));
+  } while (points < MAX_POINTS - 1 && confirm(`You have ${points}. Take more?`));
   return points;
 }
 
@@ -35,7 +35,7 @@ function getCompPoints(cards) {
     if (points > 21) {
       return 0;
     }
-  } while (points < MAX_POINTS && points < COMP_LIMIT_POINTS);
+  } while (points < MAX_POINTS - 1 && points < COMP_LIMIT_POINTS);
   return points;
 }
 
@@ -58,8 +58,8 @@ function getNewDeck() {
 }
 
 export default function doBlackJack() {
-  let playerMoney = 100;
-  let compMoney = 100;
+  let playerMoney = 50;
+  let compMoney = 50;
 
   let count = 0;
   do {
@@ -72,6 +72,7 @@ export default function doBlackJack() {
 
     const userPoints = getUserPoints(cards);
     const compPoints = getCompPoints(cards);
+    console.log(`your points: ${userPoints}, comp points: ${compPoints}`);
 
     const winner = getWinner(userPoints, compPoints);
 

@@ -6,12 +6,12 @@ export default class Card {
     this.id = id;
   }
 
-  getPip() {
+  getPipId() {
     return this.id % COUNT_SAME_SUIT_CARDS;
   }
 
-  getWorth() {
-    switch (this.getPip()) {
+  getPip() {
+    switch (this.getPipId()) {
       case 0:
         return 6;
       case 1:
@@ -35,7 +35,7 @@ export default class Card {
   }
 
   getValue() {
-    switch (this.getPip()) {
+    switch (this.getPipId()) {
       case 0:
         return 6;
       case 1:
@@ -47,11 +47,11 @@ export default class Card {
       case 4:
         return 10;
       case 5:
-        return 10;
+        return 2;
       case 6:
-        return 10;
+        return 3;
       case 7:
-        return 10;
+        return 4;
       case 8:
       default:
         return 11;
@@ -63,6 +63,6 @@ export default class Card {
   }
 
   getName() {
-    return `${this.getWorth()} ${this.getSuit()}`;
+    return `${this.getPip()} ${this.getSuit()} (${this.getValue()} points)`;
   }
 }
