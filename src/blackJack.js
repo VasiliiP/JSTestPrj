@@ -4,23 +4,25 @@ const BET = 10;
 const MAX_POINTS = 21;
 const COMP_LIMIT_POINTS = 17;
 
+function takeCard(cards) {
+  const card = cards.pop();
+  console.log(`player got card: ${card.getName()}`);
+  return card.getValue();
+}
 
-function getUserPoints(cards, points = 0) {
+function getUserPoints(cards) {
+  let points = 0;
   do {
-    let card = cards.pop();
-    console.log(`player got card: ${card.getName()}`);
-    points += card.getValue();
+    points += takeCard(cards);
 
-    if (points < 11) {
-      card = cards.pop();
-      console.log(`player got card: ${card.getName()}`);
-      points += card.getValue();
+    while (points < 11) {
+      points += takeCard(cards);
     }
 
     if (points > 21) {
       return 0;
     }
-  } while (points < MAX_POINTS && confirm(`You have ${points}. Take more?`))
+  } while (points < MAX_POINTS && confirm(`You have ${points}. Take more?`));
   return points;
 }
 
@@ -33,7 +35,7 @@ function getCompPoints(cards) {
     if (points > 21) {
       return 0;
     }
-  } while (points < MAX_POINTS && points < COMP_LIMIT_POINTS)
+  } while (points < MAX_POINTS && points < COMP_LIMIT_POINTS);
   return points;
 }
 
@@ -49,9 +51,9 @@ function getWinner(userPoints, compPoints) {
 
 function getNewDeck() {
   const deck = new Deck();
-  deck.logCards();
+  // deck.logCards();
   deck.shuffle();
-  deck.logCards();
+  // deck.logCards();
   return deck.cards;
 }
 

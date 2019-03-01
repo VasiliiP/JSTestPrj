@@ -20,3 +20,4 @@ rules:
   no-restricted-globals: off
   no-trailing-spaces: off
   no-plusplus: off
+  no-alert: off
